@@ -18,7 +18,18 @@
 
 					  <h5>  {{ $item->price }} </h5>
 					   <p class="card-text">{{ $item->description }}</p>
+
+
+					   <form action="/cart/add" method="POST" >
+					   		@csrf
+					   		
+					   		<input type="hidden" name="id" value="{{ $item->id }}">
+					   		<input type="hidden" name="name" value="{{ $item->name }}">
+					   		<button class="btn btn-primary">Add to cart</button>
+					   </form> 
+					  
 				</div>
+				
 				  <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>

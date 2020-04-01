@@ -18,5 +18,8 @@ class ecomm extends Model
     	//$this->price is practically representing the name of the table plus the column name that was specified
 
     	// my question is how is this model pointing to our table name;
+
+
+	// $fillable = [];
  
 }

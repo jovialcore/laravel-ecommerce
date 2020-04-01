@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ecomm; //we are directing this class to use the  
-class productContoller extends Controller
+class productController extends Controller
 {
 
 
