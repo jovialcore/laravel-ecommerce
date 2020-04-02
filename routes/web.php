@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home',  'productController@index');
 Route::get('/cart', 'controlCart@index');
 Route::post('/cart/add', 'controlCart@store');
+Route::delete('/cart/del/{id}', 'controlCart@destroy');

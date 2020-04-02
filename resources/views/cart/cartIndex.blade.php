@@ -8,13 +8,13 @@
 
 <h1> Cart </h1>
 
-        @if(session('message'))<!---  I believe that this @ if means if the variable message is SET -->
+        @if(session()->get('success'))<!---  I believe that this @ if means if the variable message is SET -->
 
         <div class="alert alert-success " role="alert">
-        <p> {{ session('message') }}  Chai.. wetin dy coronate o</p>
+        <p> {{ session()->get('success') }}</p>
         </div> 
         @endif
-Chai.. wetin dy coronate o
+
         @if(Cart::count() > 0 )
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -37,7 +37,15 @@ Chai.. wetin dy coronate o
                             <td>{{ $item->model->description }}</td>
                             <td><input class="form-control" type="text" value="1" /></td>
                             <td class="text-right">{{$item->model->price}}</td>
-                            <td class="text-right"><a href=""><button class="btn btn-md btn-success"><i class="fa fa-trash"></i> Save For Later</button> </a> <a href=""><button class="btn btn-md btn-danger"><i class="fa fa-trash"></i> Delete </button> </a></td>
+                            <td class="text-right"><a href=""><button class="btn btn-md btn-success"><i class="fa fa-trash"></i> Save For Later</button> </a> <a href="">
+
+                            <form action="/cart/del/{{$item->rowId}}" method="POST"> 
+                                         @csrf
+                                         @method('DELETE')
+                                     
+                                <button class="btn btn-md btn-danger" type="submit"> {{-- <i class="fa fa-trash"></i> --}} Delete </button> </td>
+
+                            </form>
                         </tr>
                             @endforeach 
                         <tr>

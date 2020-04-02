@@ -25,7 +25,7 @@
 					   		
 					   		<input type="hidden" name="id" value="{{ $item->id }}">
 					   		<input type="hidden" name="name" value="{{ $item->name }}">
-					   		<button class="btn btn-primary">Add to cart</button>
+					   		<button type="submit" class="btn btn-primary">Add to cart</button>
 					   </form> 
 					  
 				</div>
