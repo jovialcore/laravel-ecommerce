@@ -14,6 +14,7 @@
         <p> {{ session()->get('success') }}</p>
         </div> 
         @endif
+ $save->name;
 
         @if(Cart::count() > 0 )
             <div class="table-responsive">
@@ -37,15 +38,25 @@
                             <td>{{ $item->model->description }}</td>
                             <td><input class="form-control" type="text" value="1" /></td>
                             <td class="text-right">{{$item->model->price}}</td>
-                            <td class="text-right"><a href=""><button class="btn btn-md btn-success"><i class="fa fa-trash"></i> Save For Later</button> </a> <a href="">
+                            <td class="text-right">
+                                  
+                            
+                            <form action="/cart/saveForLater/{{$item->rowId}}" method="POST"> 
+                                         @csrf
+                                <button class="btn btn-md btn-success"><i class="fa fa-trash"></i> Save For Later</button>
+                            </form>
+                          
+                            </td>
 
-                            <form action="/cart/del/{{$item->rowId}}" method="POST"> 
+                            <td >
+                                <form action="/cart/del/{{$item->rowId}}" method="POST"> 
                                          @csrf
                                          @method('DELETE')
                                      
-                                <button class="btn btn-md btn-danger" type="submit"> {{-- <i class="fa fa-trash"></i> --}} Delete </button> </td>
-
-                            </form>
+                                <button class="btn btn-md btn-danger" type="submit"> {{-- <i class="fa fa-trash"></i> --}} Delete </button>  
+                                </form>
+                            </td>
+                            
                         </tr>
                             @endforeach 
                         <tr>
@@ -54,7 +65,7 @@
                             <td></td>
                             <td></td>
                             <td>Sub-Total</td>
-                            <td class="text-right">255,90 €</td>
+                            <td class="text-right"> {{Cart::subtotal()}}</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -62,7 +73,7 @@
                             <td></td>
                             <td></td>
                             <td>Tax</td>
-                            <td class="text-right">6,90 €</td>
+                            <td class="text-right">N {{ Cart::tax()}}</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -70,12 +81,12 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>346,90 €</strong></td>
+                            <td class="text-right"><strong>N {{ Cart::total() }}</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
+        
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
@@ -88,6 +99,62 @@
         </div>
 @else
         <h1> No items in cart </h1>
+@endif
+
+
+
+
+
+
+<h1> Save For Later </h1>
+
+
+        @if(Cart::instance('saveForLater')->count() > 0 )
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Description</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach(Cart::instance('saveForLater')->content() as $item)
+                        <tr>
+                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                            <td>{{$item->model->name}}</td>
+                            <td>{{ $item->model->description }}</td>
+                            <td><input class="form-control" type="text" value="1" /></td>
+                            <td class="text-right">{{$item->model->price}}</td>
+                            <td class="text-right">
+
+
+                         </td>
+                               
+
+                            <td >
+                                <form action="/cart/delSaveForLater/{{$item->rowId}}" method="POST"> 
+                                         @csrf
+                                         @method('DELETE')
+                                     
+                                <button class="btn btn-md btn-danger" type="submit"> {{-- <i class="fa fa-trash"></i> --}} Delete </button>  
+                                </form>
+                            </td>
+                            
+                        </tr>
+                            @endforeach
+                    </tbody>
+                </table>
+            </div>
+@else
+        <div class="alert alert-success"> 
+        You have no item saved for later! 
+    </div>
 @endif
 </div>
 @endsection
