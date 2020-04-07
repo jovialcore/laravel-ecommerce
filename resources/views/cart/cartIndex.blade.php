@@ -14,8 +14,7 @@
         <p> {{ session()->get('success') }}</p>
         </div> 
         @endif
- $save->name;
-
+        
         @if(Cart::count() > 0 )
             <div class="table-responsive">
                 <table class="table table-striped">

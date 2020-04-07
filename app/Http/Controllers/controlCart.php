@@ -31,41 +31,40 @@ class controlCart extends Controller
 
     public function destroy($id) {
     	\Cart::remove($id);
-    	return redirect('/cart')->with('success', 'item has been successfully removed');
+    	return redirect('/cart')->with("success", " item has been successfully removed");
     }
 
 //save for later cart
-    public function saveForLater(Request $request) {
+    public function saveForLater($id) {
+    	 $idSave = \Cart::instance('default')->get($id);
+  
+    	$dup = \Cart::instance('default')->search(function($cartItem, $rowId) use ($id){	
+    				return $rowId === $id;
 
- 			$idSave = \Cart::get($request->id); 
- 		
-
-    						//check for duplicate
-    			$duplicate = \Cart::instance('default')->search(function($cartItem, $id) use ($request) {
-    			
-    				return $cartItem->rowId === $request->id;
     			});
-    				// if there are duplicates display that message
-    				if ($duplicate->isNotEmpty()){
-				
-    				\Cart::instance('saveForLater')->add($idSave->id, $idSave->name,1,3)->associate('App\ecomm');
+    		if ($dup->isNotEmpty()){
 
-    		$duplicat = \Cart::instance('saveForLater')->search(function($cartItem, $id) use ($request) {
+    			$dupl = \Cart::instance('saveForLater')->search(function($cartItem, $rowId) use ($id){
+    					
+    				return $rowId === $id;
+
+    			});	
     			
-    				return $cartItem->rowId === $request->id;
-    			});
+    		if ($dup->isNotEmpty() and $dupl->isNotEmpty()) {
 
-    		if ($duplicat->isNotEmpty()) {
-    			return redirect('/cart')->with('success', 'Item was successfully saved for later collection');
-    		}
-    			
- 			
-    		}else {
+    		return 	redirect('/cart')->with("success", "{$idSave->name} already exist in the cart ");
+    
+}     			 
+	else {	
+		$idSave = \Cart::instance('default')->get($id);
+		\Cart::remove($id); 
+		\Cart::instance('saveForLater')->add($idSave->id, $idSave->name,1,3)->associate('App\ecomm');	
+    return redirect('/cart')->with("success", "{$idSave->name} was successfully saved for later collection");	
 
-    			return redirect('/cart')->with("success", "{$idSave->name} already exit in save for later ");
-    				
-			}
-    }
+   } 
+
+	}
+}
 
     public function delSaveForLater ($id) {
 

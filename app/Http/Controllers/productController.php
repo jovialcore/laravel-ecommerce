@@ -8,25 +8,25 @@ class productController extends Controller
 {
 
 
-    /**
-     * create a new controller instance
-     * @return void 
+    
+      /**
+     * Create a new controller instance.
      *
-     * 
+     * @return void
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
+
     /**
-     * Display a listing of the resource.
+     * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        //authentication
-
-        
+  
         // this is for list of products
         $listedProd = ecomm::inRandomOrder()->take(5)->get();
         return view('productsList.home')->with('items', $listedProd);

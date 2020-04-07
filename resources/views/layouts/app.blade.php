@@ -38,10 +38,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/cart">Cart
 
-                  @if (Cart::content()->count() > 0)
+                  @if (Cart::instance('saveForLater')->content()->count() > 0)
 
                   <span class="badge badge-light">
-                    {{  Cart::content()->count()}}
+                    {{  Cart::instance('saveForLater')->content()->count()}}
                   </span>
                   @endif
             </a>
