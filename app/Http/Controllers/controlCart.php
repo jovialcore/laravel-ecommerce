@@ -73,6 +73,11 @@ class controlCart extends Controller
 	}
 }
 
+public function moveToLater ($id){
+	//remember that a model is representation of a ROW in your database
+	// A collection is a fancy array with benefits. a collection is not a record in the database
+}
+
     public function delSaveForLater ($id) {
 
     	\Cart::instance('saveForLater')->remove($id);

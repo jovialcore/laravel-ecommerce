@@ -9,7 +9,7 @@
 				<a href="" class="list-group-item">Corona drugs</a>
 			</div>
 	</div>
-
+<!--- We dont have any loop  -->
 		<div class="col-lg-9 col-md-6 mb-4">
 			<div class="card h-100">
 				<a href="{{ $item->slug }}"> <img class="card-img-top img-fluid" src="http://placehold.it/900x350"> </a>

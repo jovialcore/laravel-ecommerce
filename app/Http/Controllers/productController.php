@@ -28,9 +28,9 @@ class productController extends Controller
     {
   
         // this is for list of products
-        $listedProd = ecomm::inRandomOrder()->take(5)->get();
+        $listedProd = ecomm::inRandomOrder()->take(5)->get(); //Now i know why you have to loop through collections but you will not need to loop through models like in line 66 and the more reason is that YOU WANT TO FETCH EVERYTHING IN THAT RECORD or TABLE
         return view('productsList.home')->with('items', $listedProd);
-        //here you primarily changed th e variable that you intend to use i.e from $listedProd to items.. This is basically what we will be using in the view files... as the new table name!!!
+        //here you primarily changed th e variable that you intend to use i.e from $listedProd to items.. This is basically what we will be using in the view files... 
 }
     /**
      * Show the form for creating a new resource.
