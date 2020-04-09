@@ -135,7 +135,13 @@
 
                          </td>
                                
-
+ <td >
+                                <form action="/cart/moveToCheckout/{{$item->rowId}}" method="post"> 
+                                         @csrf
+                                      
+                                <button class="btn btn-md btn-primary" type="submit"> {{-- <i class="fa fa-trash"></i> --}} Move for Checkout </button>  
+                                </form>
+                            </td>
                             <td >
                                 <form action="/cart/delSaveForLater/{{$item->rowId}}" method="POST"> 
                                          @csrf

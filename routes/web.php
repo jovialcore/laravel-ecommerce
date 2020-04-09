@@ -14,17 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'HomeController@index'); //using the name method is to  specify a special rout name for this maybe to replace the controller method put route is actually pointing to
+// Route::get('/', 'HomeController@index'); //using the name method is to  specify a special rout name for this maybe to replace the controller method put route is actually pointing to
 // Route::get('/item','productController@index');
 Route::get('/items/{slug}', 'productController@show');
 
 Auth::routes();
 
-Route::get('/home',  'productController@index');
+Route::get('/',  'productController@index');
 Route::get('/cart', 'controlCart@index');
 Route::post('/cart/saveForLater/{id}','controlCart@saveForLater');
 Route::post('/cart/add', 'controlCart@store');
 
-Route::delete('/cart/del/{id}', 'controlCart@destroy');
+Route::post('/cart/moveToCheckout/{id}', 'controlCart@moveToLater');
 
+Route::delete('/cart/del/{id}', 'controlCart@destroy');
 Route::delete('/cart/delSaveForLater/{id}', 'controlCart@delSaveForLater');

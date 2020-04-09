@@ -76,6 +76,18 @@ class controlCart extends Controller
 public function moveToLater ($id){
 	//remember that a model is representation of a ROW in your database
 	// A collection is a fancy array with benefits. a collection is not a record in the database
+
+    $searchDefaultClass = \Cart::instance('default')->search( function ($cartItem, $row){
+
+                return $rowId === $id;
+    });
+
+    if (!$searchDefaultClass->isNotEmpty()){
+        $idSave = \Cart::instance('saveForLater')->get($id);
+        \Cart::instance('default')->add($idSave->id, $idSave->name, 1, 3)->associate('App\ecomm');
+        \Cart::instance('saveForLater')->remove($id);
+        return redirect('/cart')->with("success", "{$idSave->name} was successfully moved to this cart for checkout");    
+    }
 }
 
     public function delSaveForLater ($id) {
