@@ -1,7 +1,12 @@
 @extends('layouts.app'){{-- //in laravel . also means / (like dot also means slash) --}}
 
 @section('content')
+<style type="text/css">
+  .slide{
+    height: 23em;
+  }
 
+</style>
  <div class="col-lg-3">
 
         <h1 class="my-4">Shop Name</h1>
@@ -24,13 +29,13 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="{{ asset('images.corona.jpg') }}" alt="First slide">
+              <img class="d-block slide img-fluid" src="{{ asset('images/corona.jpg') }}" width="100%" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+              <img class="d-block slide img-fluid" src="{{ asset('images/handSanit.jpg') }}" width="100%" height="2%" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
+              <img class="d-block slide img-fluid" src="{{ asset('images/nosem.jpg') }}" width="100%" height="2%" alt="First slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

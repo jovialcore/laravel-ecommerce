@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = 'homeW';
+    public const HOME = '';// this is what other reidrects are using
 
     /**
      * Define your route model bindings, pattern filters, etc.
