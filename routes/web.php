@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/item','productController@index');
 Route::get('/items/{slug}', 'productController@show');
 
-Auth::routes();
-
 Route::get('/',  'productController@index');
+Auth::routes(['login' => false, 'register' => false]);
+
 Route::get('/cart', 'controlCart@index');
 Route::post('/cart/saveForLater/{id}','controlCart@saveForLater');
 Route::post('/cart/add', 'controlCart@store');
