@@ -27,15 +27,16 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
+      @foreach($items as $item)
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block slide img-fluid" src="{{ asset('images/corona.jpg') }}" width="100%" alt="First slide">
+              <a href="href="/items/{{$item->slug }}"><img class="d-block slide img-fluid" src="{{ asset('images/corona.jpg') }}" width="100%" alt="First slide"></a>
             </div>
             <div class="carousel-item">
-              <img class="d-block slide img-fluid" src="{{ asset('images/handSanit.jpg') }}" width="100%" height="2%" alt="First slide">
+             <a href="/items/{{$item->slug }}> <img class="d-block slide img-fluid" src="{{ asset('images/handSanit.jpg') }}" width="100%" height="2%" alt="First slide"> </a>
             </div>
             <div class="carousel-item">
-              <img class="d-block slide img-fluid" src="{{ asset('images/nosem.jpg') }}" width="100%" height="2%" alt="First slide">
+             <a href="/items/{{$item->slug }}> <img class="d-block slide img-fluid" src="{{ asset('images/nosem.jpg') }}" width="100%" height="2%" alt="First slide"> </a>
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -50,7 +51,7 @@
 
         <div class="row">
 
-@foreach($items as $item)
+
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">

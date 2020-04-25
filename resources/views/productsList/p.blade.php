@@ -5,8 +5,8 @@
 			<h4 class="my-4">Corona Virus</h4>
 			<div class="list-group"> 
 				<a href="" class="list-group-item active">Corona drugs</a>
-				<a href="" class="list-group-item">Corona drugs</a>
-				<a href="" class="list-group-item">Corona drugs</a>
+				<a href="" class="list-group-item">Corona protectives</a>
+				<a href="" class="list-group-item">Corona update</a>
 			</div>
 	</div>
 <!--- We dont have any loop  -->
