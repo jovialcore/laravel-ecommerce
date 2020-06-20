@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// use Gloudemans\Shoppingcart;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 use App\ecomm; //we are directing this class to use the  
 class productController extends Controller
 {
@@ -23,7 +24,18 @@ class productController extends Controller
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
+
+
      */
+
+
+    // public function backTocartIndexPage(Store $req){
+
+
+    //     $imgData = ecomm::where('id', $req->id);
+        
+    //   return  view ('cart.cartIndex', compact($imgData));
+    // }
     public function index()
     {
   
@@ -64,7 +76,10 @@ class productController extends Controller
         //basically what i want is that when a user clicks on a link it should find the id of that item that is in the 
         //DB and send it and return it to another views
         $listedProd = ecomm::where('slug', $slug)->firstOrfail();
+         //getting my own file path
+        //$file_path = public_path('images'. )
         return view('productsList.p')->with('item', $listedProd);
+        
     }
 
     /**

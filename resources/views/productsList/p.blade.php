@@ -12,7 +12,7 @@
 <!--- We dont have any loop  -->
 		<div class="col-lg-9 col-md-6 mb-4">
 			<div class="card h-100">
-				<a href="{{ $item->slug }}"> <img class="card-img-top img-fluid" src="http://placehold.it/900x350"> </a>
+				<a href="{{ $item->slug }}"> <img class="card-img-top img-fluid" src="{{url('images/',$item->Image)}}"> </a>
 				<div class="card-body">
 					<h4 class="card-title">     <a href="/items/ {{ $item->slug }}">{{ $item->name }}</a></h4>
 
@@ -25,6 +25,7 @@
 					   		
 					   		<input type="hidden" name="id" value="{{ $item->id }}">
 					   		<input type="hidden" name="name" value="{{ $item->name }}">
+					   		<input type="hidden" name="Image" value="{{ $item->Image}}">
 					   		<button type="submit" class="btn btn-primary">Add to cart</button>
 					   </form> 
 					  

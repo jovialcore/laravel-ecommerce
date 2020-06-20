@@ -21,6 +21,9 @@ Route::get('/items/{slug}', 'productController@show');
 Route::get('/',  'productController@index');
 Auth::routes(['login' => false, 'register' => false]);
 
+
+// Route::get('/cartImage', 'productController@backTocartIndexPage');
+
 Route::get('/cart', 'controlCart@index');
 Route::post('/cart/saveForLater/{id}','controlCart@saveForLater');
 Route::post('/cart/add', 'controlCart@store');

@@ -3,17 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\ecomm;
 class controlCart extends Controller
 {
-    public function index(){
+    public function index(Request $req){ // for image stuff
+
+        // dd($req->id);
+
+        // $getImg = ecomm::where('Image', $req->Image);
+            
        return view('cart.cartIndex'); 
+        // return redirect('/cartImage');
 
     }
 //we use this to check for duplication
     public function store(Request $request){
 		
 		$duplication = \Cart::search(function($cartStuff, $id) use ($request) {
+
+            //closure like the on abovr simply means getting the return value of a method/function as ana attribute of another function
 
 			return $cartStuff->id === $request->id;
 
@@ -22,10 +30,12 @@ class controlCart extends Controller
 		if($duplication->isNotEmpty()){
 			 //lets show the message
 
-			return redirect('/cart')->with('success', 'Item already exist   in your cart'); 
+			return redirect('/cart')->with('success', 'Item already exist in your cart'); 
 		}
+        
+   $jovial = \Cart::add($request->id, $request->name, 3, $request->Image, 8)->associate('App\ecomm');  
 
-     \Cart::add($request->id, $request->name, 1, 3)->associate('App\ecomm')   ;  
+
      return redirect('/cart')->with('success', 'Your item has been added to cart!'); 
     }
 
@@ -65,7 +75,7 @@ class controlCart extends Controller
 
 		$idSave = \Cart::instance('default')->get($id);
 		\Cart::remove($id); 
-		\Cart::instance('saveForLater')->add($idSave->id, $idSave->name,1,3)->associate('App\ecomm');	
+		\Cart::instance('saveForLater')->add($idSave->id, $idSave->name, 3, $request->Image, 1)->associate('App\ecomm');	
     return redirect('/cart')->with("success", "{$idSave->name} was successfully saved for later collection");	
 
    } 
@@ -84,7 +94,7 @@ public function moveToLater ($id){
 
     if (!$searchDefaultClass->isNotEmpty()){
         $idSave = \Cart::instance('saveForLater')->get($id);
-        \Cart::instance('default')->add($idSave->id, $idSave->name, 1, 3)->associate('App\ecomm');
+        \Cart::instance('default')->add($idSave->id, $idSave->name, 3, $request->Image, 1)->associate('App\ecomm');
         \Cart::instance('saveForLater')->remove($id);
         return redirect('/cart')->with("success", "{$idSave->name} was successfully moved to this cart for checkout");    
     }

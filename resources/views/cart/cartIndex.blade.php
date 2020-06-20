@@ -30,17 +30,19 @@
                     </thead>
                     <tbody>
 
-                        @foreach(Cart::content() as $item)
+                     @foreach(Cart::content() as $itema)
+               {{--    <?php dd($model); ?> --}}
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>{{$item->model->name}}</td>
-                            <td>{{ $item->model->description }}</td>
+
+                            <td><img src="{{url('images/', $itema->model->Image)}}" width="60px" /> </td>
+                            <td>{{$itema->model->name}}</td>
+                            <td>{{ $itema->model->description }}</td>
                             <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">{{$item->model->price}}</td>
+                            <td class="text-right">{{$itema->model->price}}</td>
                             <td class="text-right">
                                   
                             
-                            <form action="/cart/saveForLater/{{$item->rowId}}" method="POST"> 
+                            <form action="/cart/saveForLater/{{$itema->rowId}}" method="POST"> 
                                          @csrf
                                 <button class="btn btn-md btn-success"><i class="fa fa-trash"></i> Save For Later</button>
                             </form>
@@ -48,7 +50,7 @@
                             </td>
 
                             <td >
-                                <form action="/cart/del/{{$item->rowId}}" method="POST"> 
+                                <form action="/cart/del/{{$itema->rowId}}" method="POST"> 
                                          @csrf
                                          @method('DELETE')
                                      
