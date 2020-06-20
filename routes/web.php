@@ -28,6 +28,8 @@ Route::get('/cart', 'controlCart@index');
 Route::post('/cart/saveForLater/{id}','controlCart@saveForLater');
 Route::post('/cart/add', 'controlCart@store');
 
+Route::get('/cart/pay', 'controlCart@pay');
+
 Route::post('/cart/moveToCheckout/{id}', 'controlCart@moveToLater');
 
 Route::delete('/cart/del/{id}', 'controlCart@destroy');

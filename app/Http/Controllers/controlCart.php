@@ -75,7 +75,7 @@ class controlCart extends Controller
 
 		$idSave = \Cart::instance('default')->get($id);
 		\Cart::remove($id); 
-		\Cart::instance('saveForLater')->add($idSave->id, $idSave->name, 3, $request->Image, 1)->associate('App\ecomm');	
+		\Cart::instance('saveForLater')->add($idSave->id, $idSave->name, 3, $idSave->Image, 1)->associate('App\ecomm');	
     return redirect('/cart')->with("success", "{$idSave->name} was successfully saved for later collection");	
 
    } 
@@ -104,6 +104,12 @@ public function moveToLater ($id){
 
     	\Cart::instance('saveForLater')->remove($id);
     	return redirect('/cart')->with('success', 'item was successfully deleted from save-for-later');
+    }
+
+
+    public function pay() {
+
+        return view('checkout.pay');
     }
 }
  

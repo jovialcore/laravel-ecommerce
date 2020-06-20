@@ -34,7 +34,7 @@
                {{--    <?php dd($model); ?> --}}
                         <tr>
 
-                            <td><img src="{{url('images/', $itema->model->Image)}}" width="60px" /> </td>
+                            <td><img src="{{url('images/', $itema->model->Image)}}"  width="50px" height="50" /> </td>
                             <td>{{$itema->model->name}}</td>
                             <td>{{ $itema->model->description }}</td>
                             <td><input class="form-control" type="text" value="1" /></td>
@@ -94,7 +94,7 @@
                    <a href="/"> <button class="btn btn-block btn-light">Continue Shopping</button> </a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                   <a h href="/cart/pay"> <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button> </a>
                 </div>
             </div>
         </div>
@@ -127,7 +127,7 @@
 
                         @foreach(Cart::instance('saveForLater')->content() as $item)
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                           <td><img src="{{url('images/', $itema->model->Image)}}" width="50px" height="50" /> </td>
                             <td>{{$item->model->name}}</td>
                             <td>{{ $item->model->description }}</td>
                             <td><input class="form-control" type="text" value="1" /></td>
