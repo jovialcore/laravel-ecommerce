@@ -11,7 +11,7 @@ class category extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public functionndex()
+    public function index()
     {
         //
     }
