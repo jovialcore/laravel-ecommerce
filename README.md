@@ -7,4 +7,5 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-#A laravel ecommerce web app
+#A laravel ecommerce web app built with bum_bum shopping cart laravel package...
+
