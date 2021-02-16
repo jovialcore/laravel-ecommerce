@@ -17,7 +17,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ URL::asset('css/shop.css') }}" rel="stylesheet">
+<!-- this styling link is for production -->
+
+<link href="{{ secure_asset('css/shop.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+<!-- this styling is for develpoment -->
+      <link href="{{ URL::asset('css/shop.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
