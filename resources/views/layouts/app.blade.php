@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'covid-19 store') }}</title>
 
     <!-- Scripts -->
-    <script   src="{{ URL::asset('js/app.js') }}" defer></script>
+    <script   src="{{ secure_asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
