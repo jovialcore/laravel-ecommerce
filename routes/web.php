@@ -25,7 +25,9 @@ Auth::routes(['login' => false, 'register' => false]);
 // Route::get('/cartImage', 'productController@backTocartIndexPage');
 
 Route::get('/cart', 'controlCart@index');
+
 Route::post('/cart/saveForLater/{id}','controlCart@saveForLater');
+
 Route::post('/cart/add', 'controlCart@store');
 
 Route::get('/cart/pay', 'controlCart@pay');
@@ -33,4 +35,5 @@ Route::get('/cart/pay', 'controlCart@pay');
 Route::post('/cart/moveToCheckout/{id}', 'controlCart@moveToLater');
 
 Route::delete('/cart/del/{id}', 'controlCart@destroy');
+
 Route::delete('/cart/delSaveForLater/{id}', 'controlCart@delSaveForLater');

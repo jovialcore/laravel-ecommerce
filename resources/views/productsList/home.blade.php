@@ -7,7 +7,7 @@
   }
 
 </style>
- <div class="col-lg-3">
+ <!-- <div class="col-lg-3">
 
         <h1 class="my-4">Shop Name</h1>
         <div class="list-group">
@@ -16,10 +16,10 @@
           <a href="#" class="list-group-item">Category 3</a>
         </div>
 
-      </div>
+      </div> -->
       <!-- /.col-lg-3 -->
 
-      <div class="col-lg-9">
+      <div class="col-lg-9 mx-auto">
 
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -51,10 +51,14 @@
         <div class="row">
 
 @foreach($items as $item)
-
+<!-- <img class="card-img-top" src="{{url('images/',$item->img)}}" alt=""> -->
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="/items/{{$item->slug }}"><img class="card-img-top" src="{{url('images/',$item->Image)}}" alt=""></a>
+              <a href="/items/{{$item->slug }}"> 
+        
+              <img class="card-img-top" src="{{ url('images/',$item->img) }}" alt="" style="height:400px;">
+               
+              </a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="/items/{{$item->slug }}">{{$item->name }}</a>

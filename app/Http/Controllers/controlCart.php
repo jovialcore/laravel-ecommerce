@@ -13,7 +13,7 @@ class controlCart extends Controller
         // $getImg = ecomm::where('Image', $req->Image);
             
        return view('cart.cartIndex'); 
-        // return redirect('/cartImage');
+		// return redirect('/cartImage');
 
     }
 //we use this to check for duplication
@@ -33,7 +33,7 @@ class controlCart extends Controller
 			return redirect('/cart')->with('success', 'Item already exist in your cart'); 
 		}
         
-   $jovial = \Cart::add($request->id, $request->name, 3, $request->Image, 8)->associate('App\ecomm');  
+   $jovial = \Cart::add($request->id, $request->name, $request->price)->associate('App\ecomm');  
 
 
      return redirect('/cart')->with('success', 'Your item has been added to cart!'); 
@@ -52,6 +52,8 @@ class controlCart extends Controller
     	//here is how it works
     	 $idSave = \Cart::instance('default')->get($id);
   // search in the default intance class cart first for the cart item id that is being sent across from the serve
+
+  
     	$dup = \Cart::instance('default')->search(function($cartItem, $rowId) use ($id){	
     				return $rowId === $id;
 
@@ -72,13 +74,16 @@ class controlCart extends Controller
     
 }     			 
 	else {	//if not, then save the item to savForLater cart and redirect with the message
+		
 
 		$idSave = \Cart::instance('default')->get($id);
 		\Cart::remove($id); 
-		\Cart::instance('saveForLater')->add($idSave->id, $idSave->name, 3, $idSave->Image, 1)->associate('App\ecomm');	
+
+
+		\Cart::instance('saveForLater')->add($idSave->id, $idSave->name, $id->price, $idSave->img, 1)->associate('App\ecomm');	
     return redirect('/cart')->with("success", "{$idSave->name} was successfully saved for later collection");	
 
-   } 
+  } 
 
 	}
 }

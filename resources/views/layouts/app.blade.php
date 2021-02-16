@@ -10,17 +10,18 @@
     <title>{{ config('app.name', 'covid-19 store') }}</title>
 
     <!-- Scripts -->
-    <script src="js/app.js" defer></script>
+    <script   src="{{ URL::asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="css/app.css" rel="stylesheet">
-    <link href="css/shop.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/shop.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
     <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
